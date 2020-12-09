@@ -40,6 +40,7 @@ String outputState = "off";
 // Assign output variables to GPIO pins
 char API[18];
 char Interval[4];//default is 3 minutes
+char Relay[2];// will accept as char but will turn into boolean ; Place 1
 //flag for saving data
 bool shouldSaveConfig = false;
 void Reset (){
@@ -85,6 +86,7 @@ void setup() {
           Serial.println("\nparsed json");
           strcpy(API, json["API"]); // needs to add more lines if more custom fields
           strcpy(Interval, json["Interval"]);
+          strcpy(Relay, json["Relay"]); // Place 2
         } else {
           Serial.println("failed to load json config");
         }
@@ -97,6 +99,7 @@ void setup() {
   
   WiFiManagerParameter custom_output("API", "API",API, 20); // id, placeholder, default value, length; needs more lines if more custom fields
   WiFiManagerParameter custom_interval("Interval", "Interval (mins)",Interval ,4);
+  WiFiManagerParameter custom_interval("Relay", "ON/ OFF",Relay ,2); // Place 3;
   
   // WiFiManager
   // Local intialization. Once its business is done, there is no need to keep it around
@@ -111,6 +114,7 @@ void setup() {
   //add all your parameters here
   wifiManager.addParameter(&custom_output); // needs more lines if more custom fields
   wifiManager.addParameter(&custom_interval);
+  wifiManager.addParameter(&custom_relay); // Place 4;
   // Uncomment and run it once, if you want to erase all the stored information
   //wifiManager.resetSettings();
 
@@ -136,6 +140,7 @@ void setup() {
   
   strcpy(API, custom_output.getValue());
   strcpy(Interval, custom_interval.getValue());
+  strcpy(Relay, custom_relay.getValue()); // Place 5
   //save the custom parameters to FS
   if (shouldSaveConfig) {
     Serial.println("saving config");
@@ -143,6 +148,7 @@ void setup() {
     JsonObject& json = jsonBuffer.createObject();
     json["API"] = API;
     json["Interval"]=Interval;
+    json["Relay"]=Relay; // Place 6
 
     File configFile = SPIFFS.open("/config.json", "w");
     if (!configFile) {
