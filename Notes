@@ -1,4 +1,4 @@
 Parameters and circuit diagram
-- We will use LiFePO4 Battery to power the circuit (https://diyi0t.com/best-battery-for-esp8266/)
-- We will use sleep mode
+- We will use Li-ion Battery to power the circuit (https://diyi0t.com/best-battery-for-esp8266/)
+- We will use deep sleep mode (more at https://medium.com/electronza/esp8266-running-on-battery-power-89fc124d08a4)
 - 
