@@ -1930,12 +1930,12 @@ void StartWiFi() {
   //----------------------------------------------------------------------
   Udp.begin(localPort);
 
-  time_t internet_t;
-  internet_t = now ();
-  RTC.set(internet_t); // added by Sao 
+  //time_t internet_t;
+  //internet_t = now ();
+  //RTC.set(internet_t); // added by Sao 
   //Sao will need //
-  setSyncProvider(RTC.get);   // the function to get the time from the RTC (added by Sao)
-  //setSyncProvider(getNtpTime);
+  //setSyncProvider(RTC.get);   // the function to get the time from the RTC (added by Sao)
+  setSyncProvider(getNtpTime);
   setSyncInterval(NTPfastReq);
   // Begin IoT server
   //----------------------------------------------------------------------
