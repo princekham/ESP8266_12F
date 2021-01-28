@@ -1,0 +1,5 @@
+For SCL SDA pins 
+Check at 
+https://www.mikrocontroller-elektronik.de/nodemcu-esp8266-tutorial-wlan-board-arduino-ide/
+From there
+GPIO 4 - SDA; GPIO 5 - SCL
