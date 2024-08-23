@@ -1,6 +1,6 @@
 ### ESP8266 Node MCU
 
-- SDA (Data Line): GPIO4 (D5)
+- SDA (Data Line): GPIO4 (D2)
 - SCL (Clock Line): GPIO5 (D1)
 
 
